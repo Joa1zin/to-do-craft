@@ -1,27 +1,23 @@
 import React from 'react'
-import { StyleTasks } from './style'
-import {BiSolidPencil} from 'react-icons/bi'
-import {BiSolidTrashAlt} from 'react-icons/bi'
+import { StyleTask } from './style'
 
-const Tasks = () => {
+
+const Task = ({todo}) => {
     return (
-        <StyleTasks>
-            <button className='check'>
-                <div/>
-            </button>
-            <p>
-                Andre Leodoro comeu minha bundinha 
-            </p>
-            <div className='bcontainer'>
-                <button className='edit'>
-                    <BiSolidPencil size={20}/>
-                </button>
-                <button className='delete'>
-                    <BiSolidTrashAlt size={20}/>
-                </button>
+        <StyleTask>
+            <div>
+                []
+                <div>
+                    <p>
+                        {todo.title}
+                    </p>
+                    <p>
+                        {todo.time}
+                    </p>
+                </div>
             </div>
-        </StyleTasks>
+        </StyleTask>
     )
 }
 
-export default Tasks
+export default Task

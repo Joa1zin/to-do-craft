@@ -1,13 +1,18 @@
 import React from 'react'
-import { StyleSection } from './style'
-import Tasks from '../Tasks'
+import { useSelector } from 'react-redux'
+import Task from '../Tasks';
 
-const Section = () => {
+const Content = () => {
+    const todoList = useSelector(state => state.todo.todoList);
+    const sortedTodoList = [...todoList];
+    sortedTodoList.sort((a, b) => new Date(b.time) - new Date(a.time));
     return (
-        <StyleSection>
-            <Tasks/>
-        </StyleSection>
+        <div>
+            {sortedTodoList && sortedTodoList.length > 0 
+            ? sortedTodoList.map((todo) => <Task key={todo.id} todo={todo}/>)
+            : 'Nenhuma tarefa encontrada'}
+        </div>
     )
 }
 
-export default Section
+export default Content

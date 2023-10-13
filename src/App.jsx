@@ -1,9 +1,12 @@
+import { Toaster } from 'react-hot-toast'
 import { ThemeProvider } from 'styled-components'
 import { tema } from './styles/theme'
 import { GlobalStyle } from './styles/GlobalStyle'
 import Logo from './components/Logo'
 import Header from './components/Header'
-import Section from './components/Section'
+import Content from './components/Section'
+
+
 
 
 function App() {
@@ -13,7 +16,13 @@ function App() {
       <GlobalStyle/>
       <Logo/>
       <Header/>
-      <Section/>
+      <Content/>
+      <Toaster position='top-right' toastOptions={{
+        style: {
+          fontSize: '0.8rem',
+        },
+      }}
+      />
     </ThemeProvider>
 
   )

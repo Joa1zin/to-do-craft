@@ -1,16 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleHeader } from './style'
-import Button from '../Button'
-import Search from '../Search'
-import Filter from '../Filter'
+import {MdAddToPhotos} from 'react-icons/md'
+
+
+import TodoModal from '../Modal'
+
 
 
 const Header = () => {
+    const [modalOpen, setModalOpen] = useState(false);
+
     return (
         <StyleHeader>
-            <Button/>
-            <Search/>
-            <Filter/>
+            <button type='button' onClick={() => setModalOpen(true)}>Adicionar Tarefa <MdAddToPhotos size={18}/></button> 
+            <input placeholder='Procure uma tarefa'/>
+            <select>
+                <option value="">Todos</option>
+                <option value="">Completas</option>
+                <option value="">Incompletas</option>        
+            </select>
+            <TodoModal modalOpen={modalOpen} setModalOpen={setModalOpen}/>
         </StyleHeader>
     )
 }
