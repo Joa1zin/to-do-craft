@@ -14,68 +14,77 @@ export const StyleModal = styled.div`
 	
 
 .container {
-	background-color: #c4bdbd;
-	max-width: 500px;
-	width: 90%;
+	background-image: url('../wall.png');
+	border: solid 5px ${(p) => p.theme.blueDark};
+	max-width: 550px;
+	width: 100%;
 	margin: 0 auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 2rem;
+	padding: 1.8rem;
 	border-radius: 8px;
 	position: relative;
-	
 }
-.closeButton {
-	position: absolute;
-	top: -10px;
-	right: 0;
-	transform: translateY(-100%);
-	font-size: 2.5rem;
-	padding: 0.5rem;
-	border-radius: 4px;
-	background-color: var(--gray-1);
-	color: var(--black-2);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	cursor: pointer;
-	transition: 0.3s ease all;
-	z-index: -1;
-	&:hover {
-		background-color: #e32525;
-		color: white;
-	}
-}
+
 .formTitle {
-	color: var(--black-1);
+	color: ${(p) => p.theme.white};
 	font-size: 2rem;
-	font-weight: 600;
 	margin-bottom: 2rem;
 	text-transform: capitalize;
+	background-color: ${(p) => p.theme.grey};
+	width: fit-content;
+	border-radius: 6px;
+	padding: 0.2rem 0.4rem;
+	border: solid 2px ${(p) => p.theme.white};
 }
+
 .form {
-	width: 100%;
 	label {
 		font-size: 1.6rem;
-		color: var(--black-1);
-		input,
+		color: ${(p) => p.theme.white};
+		input {
+			background-color: ${(p) => p.theme.white} ;
+			border: solid 2px ${(p) => p.theme.black};
+			border-radius: 6px;
+			font-size: 1.2rem;
+			text-decoration: none;
+			cursor: pointer;
+			overflow: hidden;
+			margin-bottom: 2rem;
+			margin-top: 0.5rem;			
+		}
 		select {
 			margin-top: 0.5rem;
-			margin-bottom: 2rem;
 			width: 100%;
 			padding: 1rem;
-			border: none;
-			background-color: var(--white);
-			font-size: 1.6rem;
+			border: solid 2px ${(p) => p.theme.black};
+			background-color: ${(p) => p.theme.white};
+			font-size: 1.2rem;
 		}
 	}
 }
+
 .buttonContainer {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
 	margin-top: 2rem;
 	gap: 1rem;
+	button{
+		cursor: pointer;
+		font-size: 1.1rem;
+		border-radius: 6px;
+	}
+}
+
+.btn-add{
+	background-color: ${(p) => p.theme.grey};
+	border: solid 2px ${(p) => p.theme.white};
+	color: ${(p) => p.theme.white};
+}
+
+.btn-cancel{
+	border: solid 2px ${(p) => p.theme.black}
 }
 `

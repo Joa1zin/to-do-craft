@@ -19,7 +19,7 @@ const Header = () => {
                 <option value="">Completas</option>
                 <option value="">Incompletas</option>        
             </select>
-            <TodoModal modalOpen={modalOpen} setModalOpen={setModalOpen}/>
+            <TodoModal type='add' modalOpen={modalOpen} setModalOpen={setModalOpen}/>
         </StyleHeader>
     )
 }

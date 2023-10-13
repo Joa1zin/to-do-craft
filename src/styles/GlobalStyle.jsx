@@ -14,7 +14,6 @@ export const GlobalStyle = createGlobalStyle`
         background-image: url('../wallpaper.jpg');
         background-size: cover;
         background-repeat: no-repeat; 
-        backdrop-filter: blur(5px);
     }
 
     button{

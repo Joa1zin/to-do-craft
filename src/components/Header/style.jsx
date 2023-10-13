@@ -8,8 +8,10 @@ export const StyleHeader = styled.header`
     margin: 0 200px;
     padding: 20px;
     background: ${(p) => p.theme.blueDark};
+    background-image: url("../portal.png");
     border-radius: 10px;
     border: solid black 3px;
+    
 
     button{
         display: flex;
@@ -17,7 +19,7 @@ export const StyleHeader = styled.header`
         align-items: center;
         height: auto;
         padding: 0.8rem 1.4rem;
-        border: none;
+        border: solid 2px ${(p) => p.theme.black};
         border-radius: 6px;
         font-size: 14px;
         text-decoration: none;
@@ -30,11 +32,10 @@ export const StyleHeader = styled.header`
     input{
         display: inline-block;
         height: auto;
-        border: none;
+        border: solid 2px ${(p) => p.theme.black};
         border-radius: 6px;
         font-size: 14px;
         text-decoration: none;
-        text-transform: capitalize;
         cursor: pointer;
         overflow: hidden;
         padding: 1rem;
@@ -44,7 +45,7 @@ export const StyleHeader = styled.header`
     select{
         display: inline-block;
         height: auto;
-        border: none;
+        border: solid 2px ${(p) => p.theme.black};
         border-radius: 6px;
         font-size: 14px;
         text-decoration: none;

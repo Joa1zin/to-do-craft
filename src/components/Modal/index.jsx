@@ -1,28 +1,55 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { StyleModal } from './style'
 import { useDispatch } from 'react-redux';
-import { addTodo } from '../../utils/Slice';
+import { addTodo, updateTodo } from '../../utils/Slice';
 import toast from 'react-hot-toast';
+import {v4} from 'uuid'
 
 
 
-const TodoModal = ({modalOpen, setModalOpen}) => {
+const TodoModal = ({type, modalOpen, setModalOpen, todo}) => {
     const [title, setTitle] = useState('');
-    const [status, setStatus] = useState('incompleto');
+    const [status, setStatus] = useState('incomplete');
     const dispatch = useDispatch()
+    useEffect(() => {
+        if(type === 'update' && todo){
+            setTitle(todo.title);
+            setStatus(todo.status);
+        }else{
+            setTitle('');
+            setStatus('incomplete');
+        }
+    }, [type, todo, modalOpen]);
     const handleSubmit = (e) =>{
         e.preventDefault();
+        if(title === ''){
+            toast.error('Por favor insira um título');
+            return;
+        }
         if(title && status){
-            dispatch(addTodo({
-                id: crypto.randomUUID(),
-                title,
-                status,
-                time: new Date().toLocaleString(),
-            }))
-            toast.success('Tarefa Adicionada com Sucesso');
+            if(type === 'add'){
+                dispatch(addTodo({
+                    id: v4(),
+                    title,
+                    status,
+                    time: new Date().toLocaleString(),
+                }));
+                toast.success('Tarefa adicionada com sucesso');
+                setTitle('');
+            };
+            if(type === 'update'){
+                if(todo.title !== title || todo.status !== status){
+                    dispatch(updateTodo({
+                        ...todo,
+                        title,
+                        status,
+                    }));
+                    toast.success('Tarefa atualizada com sucesso')
+                }else{
+                    toast.error('Nenhuma mudança realizada')
+                }
+            };
             setModalOpen(false);
-        }else{
-            toast.error("O título não pode estar vazio")
         }
         
     }
@@ -32,10 +59,12 @@ const TodoModal = ({modalOpen, setModalOpen}) => {
         <StyleModal>
             <div className='container'>
                 <form className='form' onSubmit={(e) => handleSubmit(e)}>
-                    <h1 className='formTitle'>Adicionar Tarefa</h1>
+                    <h1 className='formTitle'>{type === 'update' 
+                    ? 'Editar'
+                    : 'Adicionar'} Tarefa</h1>
                     <label htmlFor="title">
-                        title
-                        <input type="text" id='title' value={title} onChange={(e) => setTitle(e.target.value)}/>
+                        Título
+                        <input placeholder='Insira o título da tarefa' type="text" id='title' value={title} onChange={(e) => setTitle(e.target.value)}/>
                     </label>
                     <label htmlFor="status">
                         Status
@@ -45,10 +74,15 @@ const TodoModal = ({modalOpen, setModalOpen}) => {
                         </select>
                     </label>
                     <div className='buttonContainer'>
-                        <button type='submit'>
-                            Adicionar
+                        <button className='btn-add' type='submit'>
+                        {type === 'add' 
+                    ? 'Adicionar'
+                    : 'Editar'}
                         </button>
-                        <button type='button' onClick={() => setModalOpen(false)}>
+                        <button className='btn-cancel' type='button' onClick={(e) => {
+                            setModalOpen(false)
+                            setTitle('')
+                            }}>
                             Cancelar
                         </button>
                     </div>
