@@ -1,11 +1,17 @@
 import React from 'react'
-import { StyledHeader } from './style'
+import { StyleHeader } from './style'
+import Button from '../Button'
+import Search from '../Search'
+import Filter from '../Filter'
+
 
 const Header = () => {
     return (
-        <StyledHeader>
-            
-        </StyledHeader>
+        <StyleHeader>
+            <Button/>
+            <Search/>
+            <Filter/>
+        </StyleHeader>
     )
 }
 

@@ -4,7 +4,7 @@ import { StyleLogo } from './style'
 const Logo = () => {
     return (
         <StyleLogo>
-            <img src="./public/logo.png" alt="logo escrito todocraft" />
+            <img src="./logo.png" alt="logo escrito todocraft" />
         </StyleLogo>
     )
 }
