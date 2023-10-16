@@ -25,7 +25,8 @@ export const StyleTask = styled.div`
     }
 
     .title-text{
-        font-size: 18px;
+        word-break: break-all;
+        font-size: 1.2rem;
     }
 
     .date-text{

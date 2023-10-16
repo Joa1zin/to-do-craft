@@ -10,9 +10,17 @@ export const StyleHeader = styled.header`
     background: ${(p) => p.theme.blueDark};
     background-image: url("../portal.png");
     border-radius: 10px;
-    border: solid black 3px;
-    
+    border: solid black 3px;   
 
+    animation: motion 20s infinite alternate;
+    @keyframes motion {
+    0% {
+        background-position-y: 0%;
+    }
+    100% {
+        background-position-y: 100%;
+    }
+}
     button{
         display: flex;
         justify-content: center;
@@ -54,5 +62,9 @@ export const StyleHeader = styled.header`
         overflow: hidden;
         padding: 0.8rem 1.4rem;
         width: 188px;
+    }
+    .search{
+        display: flex;
+        gap: 2px;
     }
 `

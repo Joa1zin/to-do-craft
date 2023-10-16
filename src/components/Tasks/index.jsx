@@ -3,13 +3,26 @@ import { StyleTask } from './style'
 import {MdEdit} from 'react-icons/md'
 import {MdDelete} from 'react-icons/md'
 import { useDispatch } from 'react-redux'
-import { deleteTodo } from '../../utils/Slice'
+import { deleteTodo, updateTodo } from '../../utils/Slice'
 import toast from 'react-hot-toast'
 import TodoModal from '../Modal'
+import Check from '../Check'
+import { useEffect } from 'react'
 
 const Task = ({todo}) => {
     const dispatch = useDispatch();
+
     const [editModalOpen, setEditModalOpen] = useState(false);
+    
+    //const [checked, setChecked] = useState(false);
+
+    /*useEffect(() => {
+        if(todo.status === 'complete'){
+            setChecked(true)
+        } else {
+            setChecked(false)
+        }
+    }, [todo.status]); */
 
     const handleDeleteTodo = () => {
         dispatch(deleteTodo(todo.id));
@@ -19,11 +32,18 @@ const Task = ({todo}) => {
         setEditModalOpen(true)
     }
 
+    /*const handleCheck = () =>{
+        setChecked(!checked)
+        dispatch(updateTodo({
+            ...todo,
+            status: checked ? 'incomplete' : 'complete',
+        }));
+    }*/
+
     return (
         <>
             <StyleTask>
                 <div className='container-check-text'>
-                    []
                     <div className='container-text-date'>
                         <p className='title-text'>
                             {todo.title}
@@ -42,7 +62,7 @@ const Task = ({todo}) => {
                     </div>
                 </div>
             </StyleTask>
-            <TodoModal todo={todo} type="update" modalOpen={editModalOpen} setModalOpen={setEditModalOpen}/>
+            <TodoModal todo={todo} type="update" modalOpen={editModalOpen} setModalOpen={setEditModalOpen} />
         </>
     )
 }

@@ -11,6 +11,7 @@ export const StyleModal = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
 	
 
 .container {
@@ -40,10 +41,10 @@ export const StyleModal = styled.div`
 }
 
 .form {
-	label {
+	label{
 		font-size: 1.6rem;
 		color: ${(p) => p.theme.white};
-		input {
+		.title-input {
 			background-color: ${(p) => p.theme.white} ;
 			border: solid 2px ${(p) => p.theme.black};
 			border-radius: 6px;
@@ -54,7 +55,7 @@ export const StyleModal = styled.div`
 			margin-bottom: 2rem;
 			margin-top: 0.5rem;			
 		}
-		select {
+		.select {
 			margin-top: 0.5rem;
 			width: 100%;
 			padding: 1rem;

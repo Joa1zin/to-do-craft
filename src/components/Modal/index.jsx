@@ -9,8 +9,11 @@ import {v4} from 'uuid'
 
 const TodoModal = ({type, modalOpen, setModalOpen, todo}) => {
     const [title, setTitle] = useState('');
+
     const [status, setStatus] = useState('incomplete');
+
     const dispatch = useDispatch()
+    
     useEffect(() => {
         if(type === 'update' && todo){
             setTitle(todo.title);
@@ -20,6 +23,7 @@ const TodoModal = ({type, modalOpen, setModalOpen, todo}) => {
             setStatus('incomplete');
         }
     }, [type, todo, modalOpen]);
+    
     const handleSubmit = (e) =>{
         e.preventDefault();
         if(title === ''){
@@ -64,11 +68,11 @@ const TodoModal = ({type, modalOpen, setModalOpen, todo}) => {
                     : 'Adicionar'} Tarefa</h1>
                     <label htmlFor="title">
                         Título
-                        <input placeholder='Insira o título da tarefa' type="text" id='title' value={title} onChange={(e) => setTitle(e.target.value)}/>
+                        <input className='title-input' placeholder='Insira o título da tarefa' type="text" id='title' value={title} onChange={(e) => setTitle(e.target.value)}/>
                     </label>
                     <label htmlFor="status">
                         Status
-                        <select name="status" id="status" value={status} onChange={(e) => setStatus(e.target.value)}>
+                        <select className='select' name="status" id="status" value={status} onChange={(e) => setStatus(e.target.value)}>
                             <option value="incomplete">Incompleto</option>
                             <option value="complete">Completo</option>
                         </select>
