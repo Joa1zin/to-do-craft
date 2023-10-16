@@ -96,6 +96,6 @@ Acesse o link fornecido pelo Vite!
  
  
 ## Licença
-
+[MIT](https://github.com/Joa1zin/to-do-craft/blob/main/LICENSE)
 
 ####  Feito com veemência por João Mota ⚡
